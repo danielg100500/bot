@@ -21,6 +21,14 @@ def send_hello(message):
 def send_bye(message):
     bot.reply_to(message, "Пока! Удачи!")
 
+@bot.message_handler(commands=['weather'])
+def weather(message):
+    import requests
+    city = 'Москва'
+    url = f'http://wttr.in/{city}?format=3'
+    response = requests.get(url)
+    bot.send_message(message.chat.id, response.text)
+
 @bot.message_handler(commands=['geo'])
 def send_geo(message):
     bot.send_location(message.chat.id, 55.7558, 37.6173)
