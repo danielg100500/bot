@@ -1,7 +1,6 @@
 import telebot
 from bot_logic import gen_pass
 from bot_money import number
-# from bot_timer import timer
 
 bot = telebot.TeleBot("8565732472:AAEJo8ytHivnZFkDR-Daqeqe8bbfexeaoOU")
 
@@ -11,7 +10,11 @@ def send_welcome(message):
 
 @bot.message_handler(commands=['info'])
 def send_info(message):
-    bot.reply_to(message, "/hello, /bye, /password, /1or2, /timer а ещё я умею повторять.")
+    bot.reply_to(message, "/hello, /bye, /password, /1or2, /weather, /geo, /listwindows а ещё я умею повторять.")
+
+@bot.message_handler(commands=['listwindows'])
+def send_info(message):
+    bot.reply_to(message, "Windows 1.0, Windows 2.0, Windows 3.0, Windows 89, Windows 93, Windows 95, Windows 98, Windows ME (or Millenium), Windows 2000, Windows XP, Windows Vista, Windows 7, Windows 8, Windows 9, Windows 10, Windows 11.")
 
 @bot.message_handler(commands=['hello'])
 def send_hello(message):
@@ -24,7 +27,7 @@ def send_bye(message):
 @bot.message_handler(commands=['weather'])
 def weather(message):
     import requests
-    city = 'Москва'
+    city = 'Ростов - на Дону'
     url = f'http://wttr.in/{city}?format=3'
     response = requests.get(url)
     bot.send_message(message.chat.id, response.text)
@@ -33,14 +36,15 @@ def weather(message):
 def send_geo(message):
     bot.send_location(message.chat.id, 55.7558, 37.6173)
     bot.send_message(message.chat.id, "📍 Москва, Кремль")
-bot.infinity_polling()
 
 @bot.message_handler(commands=['password'])
 def password(message):
+    qqq = gen_pass(10)
     bot.reply_to(message, gen_pass(10))
 
 @bot.message_handler(commands=['1or2'])
 def money(message):
+    uuu = number()
     bot.reply_to(message, number())
 
 @bot.message_handler(func=lambda message: True)
