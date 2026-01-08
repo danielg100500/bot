@@ -5,7 +5,7 @@ import random
 from bot_logic import gen_pass
 from bot_money import number
 
-bot = telebot.TeleBot("8565732472:AAEJo8ytHivnZFkDR-Daqeqe8bbfexeaoOU")
+bot = telebot.TeleBot("TOKEN!!!")
 
 print(os.listdir('images'))
 
