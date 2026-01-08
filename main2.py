@@ -11,11 +11,11 @@ print(os.listdir('images'))
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    bot.reply_to(message, "Привет! Я твой Telegram бот. Чтобы узнать, что я умею, напиши /info")
+    bot.reply_to(message, "Привет! Поздравляю с Новым годом! Я твой Telegram бот. Чтобы узнать, что я умею, напиши /info")
 
 @bot.message_handler(commands=['info'])
 def send_info(message):
-    bot.reply_to(message, "/hello, /bye, /password, /1or2, /weather, /geo, /listwindows, /dance, /system, /system2, /random_system, /duck, /dog, /pokemon, /fox, а ещё я умею повторять.")
+    bot.reply_to(message, "/hello, /bye, /password, /1or2, /weather, /geo, /listwindows, /dance, /system, /system2, /random_system, /duck, /dog, /pokemon, /fox, /clean, а ещё я умею повторять.")
 
 @bot.message_handler(commands=['listwindows'])
 def send_info(message):
@@ -23,7 +23,7 @@ def send_info(message):
 
 @bot.message_handler(commands=['hello'])
 def send_hello(message):
-    bot.reply_to(message, "Привет! Как дела?")
+    bot.reply_to(message, "Привет!")
 
 @bot.message_handler(commands=['bye'])
 def send_bye(message):
@@ -53,6 +53,13 @@ def send_sunny(message):
     # file_path = 'images/' + photo
     file_path = f'images/{photo}'
     bot.send_photo(message.chat.id, open(file_path, 'rb'))
+
+@bot.message_handler(commands=['clean'])
+def send_cleany(message):
+    bot.reply_to(message, 'Чтобы сохранить природу, нужно сокращать потребление пластика (который разлагается около 400 лет), воды, энергии, правильно утилизировать отходы (сортировать мусор, сдавать батарейки(которые приносят вред окружающей среде)), выбирать экологичный транспорт: велосипед, общественный или ходьба (угдекислый газ нам вреден), бережно относиться к живой природе, убирая за собой мусор на пикниках и не вредить животным🌼. Пожалуйста не мусорьте!')
+    bot.reply_to(message, 'Из пластиковых бутылок можно делать кормушки для птиц.')
+    bot.send_photo(message.chat.id, photo='https://lh5.googleusercontent.com/proxy/rQzFqsiJy4yEkS8dRR8NMBOzoa4CvirdJQwNRITqqJDfDB9wXRCyqDi3ffrhgrAcCyPm53mmuV2PCkwqydMpGJDOoha1NWFiS8mNtZbcPOikIIOgjyGWrEXjcji5CK6Cthr2occP')
+    bot.reply_to(message, 'Cпасибо за понимание!')
 
 @bot.message_handler(commands=['weather'])
 def weather(message):
